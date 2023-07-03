@@ -1,5 +1,9 @@
 package iteration
 
 func Repeat(character string, repeatCount int) string {
-  return character
+	var repeat string
+	for i := 0; i < repeatCount; i++ {
+			repeat = repeat + character
+	}
+  return repeat
 }
