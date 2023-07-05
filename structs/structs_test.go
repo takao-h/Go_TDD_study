@@ -1,12 +1,12 @@
 package structs
 
-import "testing"
-
+import (
+	"testing"
+)
 func TestPerimeter(t *testing.T) {
-	width := 10.0
-	height := 10.0
 
-	got := Perimeter(width, height)
+
+	got := Perimeter(10, 10)
 	want := 40.0
 
 	if got != want {
@@ -15,7 +15,7 @@ func TestPerimeter(t *testing.T) {
 }
 
 func TestArea(t *testing.T) {
-	got := Area()
+	got := Area(10, 10)
 	want := 100.0
 
 	if got != want {
