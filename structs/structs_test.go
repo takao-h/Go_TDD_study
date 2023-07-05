@@ -3,10 +3,15 @@ package structs
 import (
 	"testing"
 )
+
+type Rectangle struct {
+    Width float64
+    Height float64
+}
+
 func TestPerimeter(t *testing.T) {
-
-
-	got := Perimeter(10, 10)
+	rectangle := Rectangle{10.0, 10.0}
+	got := Perimeter(rectangle)
 	want := 40.0
 
 	if got != want {
