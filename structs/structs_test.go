@@ -3,7 +3,10 @@ package structs
 import "testing"
 
 func TestPerimeter(t *testing.T) {
-	got := Perimeter()
+	width := 10.0
+	height := 10.0
+
+	got := Perimeter(width, height)
 	want := 40.0
 
 	if got != want {
