@@ -31,3 +31,11 @@ func assertString(t *testing.T, got, want string) {
 		t.Errorf("got %q want %q", got, want)
 	}
 }
+
+func assertError(t *testing.T, got, want error) {
+	t.Helper()
+
+	if got != want {
+		t.Errorf("got error %q want %q", got, want)
+	}
+}
