@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func main () {
+func main() {
 	Countdown(os.Stdout)
 }
 
