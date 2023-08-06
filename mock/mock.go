@@ -1,9 +1,14 @@
 package mock
 
-func main () {
-	Countdown()
-}
+import (
+	"bytes"
+	"fmt"
+)
 
-func Countdown() {
-	
+// func main () {
+// 	Countdown()
+// }
+
+func Countdown(out *bytes.Buffer) {
+	fmt.Fprint(out, 3)
 }
