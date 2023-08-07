@@ -1,4 +1,4 @@
-package mock
+package main
 
 import (
 	"fmt"
@@ -7,38 +7,34 @@ import (
 	"time"
 )
 
+// Sleeper allows you to put delays.
+type Sleeper interface {
+	Sleep()
+}
+
+// DefaultSleeper is an implementation of Sleeper with a predefined delay.
 type DefaultSleeper struct{}
 
+// Sleep will pause execution for the defined Duration.
 func (d *DefaultSleeper) Sleep() {
 	time.Sleep(1 * time.Second)
-}
-
-type Sleeper interface {
-    Sleep()
-}
-
-type SpySleeper struct {
-    Calls int
-}
-
-func (s *SpySleeper) Sleep() {
-    s.Calls++
-}
-
-func main() {
-	sleeper := &DefaultSleeper{}
-	Countdown(os.Stdout, sleeper)
 }
 
 const finalWord = "Go!"
 const countdownStart = 3
 
+// Countdown prints a countdown from 3 to out with a delay between count provided by Sleeper.
 func Countdown(out io.Writer, sleeper Sleeper) {
-    for i := countdownStart; i > 0; i-- {
-        sleeper.Sleep()
-        fmt.Fprintln(out, i)
-    }
+	for i := countdownStart; i > 0; i-- {
+		sleeper.Sleep()
+		fmt.Fprintln(out, i)
+	}
 
-    sleeper.Sleep()
-    fmt.Fprint(out, finalWord)
+	sleeper.Sleep()
+	fmt.Fprint(out, finalWord)
+}
+
+func main() {
+	sleeper := &DefaultSleeper{}
+	Countdown(os.Stdout, sleeper)
 }

@@ -1,4 +1,4 @@
-package mock
+package main
 
 import (
 	"bytes"
@@ -24,5 +24,12 @@ Go!`
 	if spySleeper.Calls != 4 {
 		t.Errorf("not enough calls to sleeper, want 4 got %d", spySleeper.Calls)
 	}
+}
 
+type SpySleeper struct {
+	Calls int
+}
+
+func (s *SpySleeper) Sleep() {
+	s.Calls++
 }
